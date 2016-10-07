@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import ch.fhnw.edu.rental.model.Movie;
 import ch.fhnw.edu.rental.model.PriceCategoryChildren;
@@ -24,7 +24,7 @@ import ch.fhnw.edu.rental.persistence.RentalRepository;
 import ch.fhnw.edu.rental.persistence.UserRepository;
 
 @Primary
-@Repository
+@Component
 @ConfigurationProperties(prefix = "movierental.rentals")
 public class RentalRepositoryJdbc extends AbstractRepository<Rental> implements RentalRepository {
 

@@ -11,14 +11,14 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import ch.fhnw.edu.rental.model.User;
 import ch.fhnw.edu.rental.persistence.RentalRepository;
 import ch.fhnw.edu.rental.persistence.UserRepository;
 
 @Primary
-@Repository
+@Component
 @ConfigurationProperties(prefix = "movierental.users")
 public class UserRepositoryJdbc extends AbstractRepository<User> implements UserRepository {
 

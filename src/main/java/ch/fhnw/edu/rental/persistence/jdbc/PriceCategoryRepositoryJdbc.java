@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import ch.fhnw.edu.rental.model.PriceCategory;
 import ch.fhnw.edu.rental.model.PriceCategoryChildren;
@@ -17,7 +17,7 @@ import ch.fhnw.edu.rental.model.PriceCategoryRegular;
 import ch.fhnw.edu.rental.persistence.PriceCategoryRepository;
 
 @Primary
-@Repository
+@Component
 @ConfigurationProperties(prefix = "movierental.pricecategories")
 public class PriceCategoryRepositoryJdbc extends AbstractRepository<PriceCategory> implements PriceCategoryRepository {
 

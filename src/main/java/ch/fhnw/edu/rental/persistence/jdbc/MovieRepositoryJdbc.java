@@ -12,14 +12,14 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import ch.fhnw.edu.rental.model.Movie;
 import ch.fhnw.edu.rental.persistence.MovieRepository;
 import ch.fhnw.edu.rental.persistence.PriceCategoryRepository;
 
 @Primary
-@Repository
+@Component
 @ConfigurationProperties(prefix = "movierental.movies")
 public class MovieRepositoryJdbc extends AbstractRepository<Movie> implements MovieRepository {
 
