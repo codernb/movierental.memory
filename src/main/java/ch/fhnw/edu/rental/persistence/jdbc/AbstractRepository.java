@@ -63,7 +63,7 @@ public abstract class AbstractRepository<T> {
 		deleteQuery = String.format("DELETE FROM %s WHERE %s = ?", table, idFieldName);
 		existsQuery = MessageFormat.format(
 				"SELECT DISTINCT COUNT(*) FROM {0} WHERE EXISTS (SELECT * FROM {0} WHERE {1} = ?)", table, idFieldName);
-		countQuery = String.format("SELECT DISTINCT COUNT(*) FROM {0} WHERE EXISTS (SELECT * FROM %s)", table);
+		countQuery = MessageFormat.format("SELECT DISTINCT COUNT(*) FROM {0} WHERE EXISTS (SELECT * FROM {0})", table);
 		insertQuery = String.format("INSERT INTO %s(%s) VALUES(%s)", table, getInsertFields(), getInsertPlaceholders());
 		updateQuery = String.format("UPDATE %s SET %s WHERE %s = ?", table, getUpdatePlaceholders(), idFieldName);
 
@@ -97,8 +97,8 @@ public abstract class AbstractRepository<T> {
 
 	public void delete(T t) {
 		jdbcTemplate.update(deleteQuery, idFunction.apply(t));
-		setIdMethod.accept(t, null);
 		referenceHolder.remove(idFunction.apply(t));
+		setIdMethod.accept(t, null);
 	}
 
 	public boolean exists(Long id) {
@@ -106,7 +106,7 @@ public abstract class AbstractRepository<T> {
 	}
 
 	public long count() {
-		return jdbcTemplate.update(countQuery);
+		return jdbcTemplate.queryForObject(countQuery, Integer.class);
 	}
 
 	protected T create(T t) {
