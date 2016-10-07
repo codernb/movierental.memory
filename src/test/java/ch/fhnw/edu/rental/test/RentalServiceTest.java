@@ -19,10 +19,10 @@ import ch.fhnw.edu.rental.services.RentalService;
 import ch.fhnw.edu.rental.services.UserService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties={"gui=false"})
+@SpringBootTest(properties = { "gui=false" })
 @Transactional
 public class RentalServiceTest {
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -34,22 +34,24 @@ public class RentalServiceTest {
 
 	@Test
 	public void testRentMovie() {
-		User u  = userService.getAllUsers().get(0);
+		User u = userService.getAllUsers().get(0);
 		int size = u.getRentals().size();
-		
+
 		// search a movie which is not yet rented
 		Movie m = null;
 		List<Movie> movies = movieService.getAllMovies();
-		for(Movie mm : movies) 
-			if(!mm.isRented()) m = mm;
-			
+		for (Movie mm : movies)
+			if (!mm.isRented())
+				m = mm;
+
 		userService.rentMovie(u, m, 10);
-		Assert.assertEquals(size+1, u.getRentals().size());
-		
+		Assert.assertEquals(size + 1, u.getRentals().size());
+
 		// check whether this movie is also assigned to u in the DB
-		for(User uu : userService.getAllUsers())
-			if(u.getId().equals(uu.getId())) u = uu;
-		Assert.assertEquals(size+1, u.getRentals().size());
+		for (User uu : userService.getAllUsers())
+			if (u.getId().equals(uu.getId()))
+				u = uu;
+		Assert.assertEquals(size + 1, u.getRentals().size());
 	}
 
 	@Test
@@ -57,7 +59,7 @@ public class RentalServiceTest {
 		List<Rental> rentals = rentalService.getAllRentals();
 		Assert.assertEquals(3, rentals.size());
 	}
-	
+
 	@Test
 	public void testGetAllRentalInfos() {
 		List<Rental> rentals = rentalService.getAllRentals();
@@ -67,7 +69,7 @@ public class RentalServiceTest {
 		Assert.assertNotNull(rental.getMovie());
 		Assert.assertNotNull(rental.getUser().getEmail());
 		Assert.assertNotNull(rental.getMovie().getTitle());
-	}	
+	}
 
 	@Test
 	public void testGetAllRentalsByUser() {
@@ -83,11 +85,11 @@ public class RentalServiceTest {
 		Rental rental = rentalService.getRentalById(new Long(1));
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(rental.getRentalDate());
-		calendar.add(Calendar.DAY_OF_YEAR, 5);	
+		calendar.add(Calendar.DAY_OF_YEAR, 5);
 		int days = rentalService.calcRemainingDaysOfRental(rental, calendar.getTime());
 		Assert.assertEquals(2, days);
 	}
-	
+
 	@Test
 	public void testReadRental() {
 		Rental rental = rentalService.getRentalById(1L);
@@ -95,7 +97,7 @@ public class RentalServiceTest {
 		Assert.assertEquals("Keller", user.getLastName());
 		Assert.assertEquals(2, user.getRentals().size());
 	}
-	
+
 	@Test
 	public void testDeleteRental() {
 		Rental rental = rentalService.getRentalById(1L);

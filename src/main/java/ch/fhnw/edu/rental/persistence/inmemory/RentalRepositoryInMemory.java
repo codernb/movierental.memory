@@ -1,4 +1,4 @@
-package ch.fhnw.edu.rental.persistence.impl;
+package ch.fhnw.edu.rental.persistence.inmemory;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,7 +17,7 @@ import ch.fhnw.edu.rental.persistence.RentalRepository;
 import ch.fhnw.edu.rental.persistence.UserRepository;
 
 @Component
-public class RentalRepositoryImpl implements RentalRepository {
+public class RentalRepositoryInMemory implements RentalRepository {
 	private Map<Long, Rental> data = new HashMap<Long, Rental>();
 	private long nextId = 1;
 

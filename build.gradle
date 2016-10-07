@@ -13,7 +13,7 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'movierental-memory'
+    baseName = 'movierental-jdbc'
     version =  '1.0.0'
 }
 
@@ -26,6 +26,7 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.boot:spring-boot-starter-web")
     runtime("com.h2database:h2")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

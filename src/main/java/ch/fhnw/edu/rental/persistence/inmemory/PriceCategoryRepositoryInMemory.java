@@ -1,4 +1,4 @@
-package ch.fhnw.edu.rental.persistence.impl;
+package ch.fhnw.edu.rental.persistence.inmemory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import ch.fhnw.edu.rental.model.PriceCategoryRegular;
 import ch.fhnw.edu.rental.persistence.PriceCategoryRepository;
 
 @Component
-public class PriceCategoryRepositoryImpl implements PriceCategoryRepository {
+public class PriceCategoryRepositoryInMemory implements PriceCategoryRepository {
 	private Map<Long, PriceCategory> data = new HashMap<Long, PriceCategory>();
 	private long nextId = 1;
 

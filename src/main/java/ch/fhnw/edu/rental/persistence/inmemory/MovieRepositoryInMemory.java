@@ -1,4 +1,4 @@
-package ch.fhnw.edu.rental.persistence.impl;
+package ch.fhnw.edu.rental.persistence.inmemory;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,7 +14,7 @@ import ch.fhnw.edu.rental.persistence.MovieRepository;
 import ch.fhnw.edu.rental.persistence.PriceCategoryRepository;
 
 @Component
-public class MovieRepositoryImpl implements MovieRepository {
+public class MovieRepositoryInMemory implements MovieRepository {
 	private Map<Long, Movie> data = new HashMap<Long, Movie>();
 	private long nextId = 1;
 

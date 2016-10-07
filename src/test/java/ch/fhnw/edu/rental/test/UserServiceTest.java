@@ -21,7 +21,7 @@ import ch.fhnw.edu.rental.services.RentalService;
 import ch.fhnw.edu.rental.services.UserService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties={"gui=false"})
+@SpringBootTest(properties = { "gui=false" })
 @Transactional
 public class UserServiceTest {
 
@@ -76,7 +76,7 @@ public class UserServiceTest {
 		User user = users.get(0);
 		assertEquals("Keller", user.getLastName());
 	}
-	
+
 	@Test
 	public void testDeleteRental() {
 		List<User> users = userService.getUsersByName("Keller");
@@ -105,7 +105,7 @@ public class UserServiceTest {
 		Movie movie = rental.getMovie();
 		assertEquals("The Revenant", movie.getTitle());
 	}
-	
+
 	@Test
 	public void testGetEmailAddress() {
 		List<User> users = userService.getUsersByName("Keller");
@@ -120,4 +120,3 @@ public class UserServiceTest {
 		assertEquals("Knecht", user.getLastName());
 	}
 }
-

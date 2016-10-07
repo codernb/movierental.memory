@@ -1,4 +1,4 @@
-package ch.fhnw.edu.rental.persistence.impl;
+package ch.fhnw.edu.rental.persistence.inmemory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import ch.fhnw.edu.rental.persistence.RentalRepository;
 import ch.fhnw.edu.rental.persistence.UserRepository;
 
 @Component
-public class UserRepositoryImpl implements UserRepository {
+public class UserRepositoryInMemory implements UserRepository {
 	private Map<Long,User> data = new HashMap<Long,User>();
 	private long nextId = 1;
 	
